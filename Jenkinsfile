@@ -2,16 +2,6 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
-            steps {
-                // Change directory to the Terraform project directory
-                dir('/home/jenkins/terraform-aws') {
-                    // Copy index.html from workspace to the Terraform project directory
-                    sh 'cp /var/lib/jenkins/workspace/Terraform\\ Project/index.html .'
-                }
-            }
-        }
-        
         stage('Terraform Init') {
             steps {
                 // Initialize Terraform and set up the backend
