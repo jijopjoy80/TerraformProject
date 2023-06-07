@@ -89,6 +89,7 @@ resource "aws_instance" "web" {
               sudo apt-get install -y nginx
               sudo cp /home/jenkins/terraform-aws/index.html /var/www/html/index.html
               sudo chown www-data:www/data /var/www/html/index.html
+              sudo mv /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bak
               sudo systemctl restart nginx
               EOF
   tags = {
