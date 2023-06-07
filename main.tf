@@ -87,8 +87,8 @@ resource "aws_instance" "web" {
               #!/bin/bash
               sudo apt-get update
               sudo apt-get install -y nginx
-              sudo cp /home/jenkins/terraform-aws/index.html /usr/share/nginx/html/index.html
-              sudo chown www-data:www-data /usr/share/nginx/html/index.html
+              sudo cp /home/jenkins/terraform-aws/index.html /var/www/html/index.html
+              sudo chown www-data:www/data /var/www/html/index.html
               sudo systemctl restart nginx
               EOF
   tags = {
