@@ -34,7 +34,7 @@ pipeline {
                     // Get the instance public IP from Terraform output
                     sh 'INSTANCE_IP=$(terraform output -raw instance_public_ip)'
                     // Use curl to fetch the content and save it to localfile.txt
-                    sh 'curl http://${INSTANCE_IP}:80 > localfile.txt'
+                    sh "curl http://${INSTANCE_IP}:80 > localfile.txt"
                 }
             }
         }
