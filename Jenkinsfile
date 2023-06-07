@@ -32,7 +32,7 @@ pipeline {
                 // Fetch the content from the specified URL and save it to localfile.txt
                 dir('/home/jenkins/terraform-aws') {
                     // Get the instance public IP from Terraform output
-                    sh 'INSTANCE_IP=$(terraform output -raw instance_public_ip)'
+                    INSTANCE_IP = sh(returnStdout: true, script: 'terraform output -raw instance_public_ip').trim()
                     // Use curl to fetch the content and save it to localfile.txt
                     sh "curl http://${INSTANCE_IP}:80 > localfile.txt"
                 }
