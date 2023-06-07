@@ -32,7 +32,6 @@ pipeline {
                 // Fetch the content from the specified URL and save it to localfile.txt
                 dir('/home/jenkins/terraform-aws') {
                     // Get the instance public IP from Terraform output
-                    def INSTANCE_IP
                     script {
                         INSTANCE_IP = sh(returnStdout: true, script: 'terraform output -raw instance_public_ip').trim()
                     }
