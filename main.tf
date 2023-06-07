@@ -87,9 +87,11 @@ resource "aws_instance" "web" {
               #!/bin/bash
               sudo apt-get update
               sudo apt-get install -y nginx
+              rm /etc/nginx/conf.d/default.conf
               cp /home/jenkins/terraform-aws/index.html /var/www/html/index.html
               cp /home/jenkins/terraform-aws/index.html /usr/share/nginx/html/index.html
               systemctl start nginx
+              sudo ufw allow 80
               EOF
   tags = {
     Name = "nginx-webserver"
