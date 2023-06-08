@@ -1,5 +1,5 @@
 provider "aws" {
-  region                   = "us-east-2"
+  region                   = "us-east-1"
   shared_credentials_files = ["~/.aws/credentials"]
   profile                  = "default"
 }
@@ -9,7 +9,7 @@ terraform {
   backend "s3" {
     bucket = "terraform-project-new"
     key    = "terraform.tfstate"
-    region = "us-east-2"
+    region = "us-east-1"
   }
 }
 
@@ -76,7 +76,7 @@ resource "aws_security_group" "allow_web" {
 
 # Define the EC2 instance that will run NGINX
 resource "aws_instance" "web" {
-  ami                         = "ami-024e6efaf93d85776"
+  ami                         = "ami-053b0d53c279acc90"
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.main.id
   associate_public_ip_address = true
