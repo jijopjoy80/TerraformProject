@@ -88,7 +88,9 @@ resource "aws_instance" "web" {
               apt-get update
               apt-get install -y nginx
               cp /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/index.html /var/www/html/index.html
-              chown www-data:www-data /var/www/html/index.html
+              chown www-data:www-data /var/www/html
+              mv /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bak
+              mv /var/www/html/index.html /var/www/html/index.nginx-debian.html
               systemctl restart nginx
               EOF
   tags = {
