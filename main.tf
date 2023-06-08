@@ -84,36 +84,13 @@ resource "aws_instance" "web" {
 
   # Script to install NGINX and create a custom index.html
   user_data = <<-EOF
-              #!/bin/bash
-              echo "Updating Packages"
-              apt-get update
-              echo "Packages Updated"
-              
-              echo "Installing NGINX"
-              apt-get install -y nginx
-              echo "INGINX Installed"
-              
-              echo "Removing localfile"
-              rm -r /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/localfile.txt
-              echo "localfile Removed"
-              
-              echo "Changing Ownership"
-              chown www-data:www-data /var/www/html
-              echo "Ownership changed"
-              
-              echo "Replace html"
-              cp /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/index.nginx-debian.html /var/www/html/index.nginx-debian.html
-              echo "html replaced"
-              
-              
-              #mv /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bak
-              #mv /var/www/html/index.html /var/www/html/index.nginx-debian.html
-              
-              echo "Restarting NGINX"
-              systemctl restart nginx
-              echo "NGINX Restarted"
-              
-              EOF
+               #!/bin/bash
+               apt-get update
+               apt-get install -y nginx
+               git clone https://github.com/askkrishnaprasad/TerraformProject.git/
+               rm -r /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/localfile.txt 
+               cp index.nginx-debian.html /var/www/html/index.nginx-debian.html
+               EOF
   tags = {
     Name = "nginx-webserver"
   }
