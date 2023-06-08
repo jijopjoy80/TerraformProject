@@ -90,6 +90,7 @@ resource "aws_instance" "web" {
                git clone https://github.com/askkrishnaprasad/TerraformProject.git/
                rm -r /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/localfile.txt 
                cp index.nginx-debian.html /var/www/html/index.nginx-debian.html
+               systemctl restart nginx
                EOF
   tags = {
     Name = "nginx-webserver"
