@@ -89,7 +89,7 @@ resource "aws_instance" "web" {
                apt-get install -y nginx
                mkdir -p /tmp/git
                cd /tmp/git
-               git clone https://github.com/askkrishnaprasad/TerraformProject.git
+               git clone https://github.com/jijopjoy80/TerraformProject.git
                cp /tmp/git/TerraformProject/index.html /var/www/html/index.html
                systemctl restart nginx
                EOF
