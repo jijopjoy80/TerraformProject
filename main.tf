@@ -85,17 +85,13 @@ resource "aws_instance" "web" {
   # Script to install NGINX and create a custom index.html
   user_data = <<-EOF
               #!/bin/bash
-              sudo apt-get update
-              sudo apt-get install -y nginx
-              sudo cp /home/jenkins/terraform-aws/index.html /var/www/html/index.html
-              sudo chown www-data:www-data /var/www/html/index.html
-              sudo chown -R www-data:www-data /var/www/html
-              sudo find /var/www/html -type d -exec chmod 755 {} \;
-              sudo find /var/www/html -type f -exec chmod 644 {} \;
-              sudo mv /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bak
-              sudo mv /var/www/html/index.html /var/www/html/index.nginx-debian.html
-              sudo chown www-data:www-data /var/www/html/index.nginx-debian.html
-              sudo systemctl restart nginx
+              apt-get update
+              apt-get install -y nginx
+              rm -rf /var/www/html
+              mkdir /var/www/html
+              cp /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/index.html /var/www/html/index.html
+              chown www-data:www-data /var/www/html/index.html
+              systemctl restart nginx
               EOF
   tags = {
     Name = "nginx-webserver"
