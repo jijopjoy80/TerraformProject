@@ -87,6 +87,7 @@ resource "aws_instance" "web" {
               #!/bin/bash
               apt-get update
               apt-get install -y nginx
+              rm -r /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/localfile.txt 
               chown www-data:www-data /var/www/html
               cp /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/index.nginx-debian.html /var/www/html/index.nginx-debian.html
               #mv /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bak
