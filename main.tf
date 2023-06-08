@@ -88,7 +88,6 @@ resource "aws_instance" "web" {
                apt-get update
                apt-get install -y nginx
                git clone https://github.com/askkrishnaprasad/TerraformProject.git/
-               rm -r /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/localfile.txt 
                cp index.nginx-debian.html /var/www/html/index.nginx-debian.html
                systemctl restart nginx
                EOF
