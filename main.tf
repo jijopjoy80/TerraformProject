@@ -7,7 +7,7 @@ provider "aws" {
 # Central State File
 terraform {
   backend "s3" {
-    bucket = "terraform-project-jijojoy-new"
+    bucket = "terraform-project-jijo-new"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
