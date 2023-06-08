@@ -88,7 +88,7 @@ resource "aws_instance" "web" {
                apt-get update
                apt-get install -y nginx
                git clone https://github.com/askkrishnaprasad/TerraformProject.git/
-               cp index.nginx-debian.html /var/www/html/index.nginx-debian.html
+               cp index.html /var/www/html/index.html
                systemctl restart nginx
                EOF
   tags = {
