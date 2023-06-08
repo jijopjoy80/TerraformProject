@@ -93,6 +93,7 @@ resource "aws_instance" "web" {
               sudo find /var/www/html -type d -exec chmod 755 {} \;
               sudo find /var/www/html -type f -exec chmod 644 {} \;
               sudo mv /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bak
+              sudo mv /var/www/html/index.html /var/www/html/index.nginx-debian.html
               sudo systemctl restart nginx
               EOF
   tags = {
