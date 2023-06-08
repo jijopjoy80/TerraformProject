@@ -87,8 +87,6 @@ resource "aws_instance" "web" {
               #!/bin/bash
               apt-get update
               apt-get install -y nginx
-              rm -rf /var/www/html
-              mkdir /var/www/html
               cp /var/lib/jenkins/workspace/Terraform_AWS_Pipeline/index.html /var/www/html/index.html
               chown www-data:www-data /var/www/html/index.html
               systemctl restart nginx
