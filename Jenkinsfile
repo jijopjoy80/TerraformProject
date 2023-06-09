@@ -16,12 +16,12 @@ pipeline {
             }
         }
         
-        //stage('Wait') {
-            //steps {
+        stage('Wait') {
+            steps {
                 // Wait for some time (180 seconds)
                 sh 'sleep 180'
-            //}
-        //}
+            }
+        }
         
         stage('Fetch and Save Content') {
             steps {
