@@ -42,11 +42,11 @@ pipeline {
             }
         }
         
-        stage('Terraform Destroy') {
-            steps {
+        //stage('Terraform Destroy') {
+           // steps {
                 // Destroy the infrastructure resources provisioned by Terraform without manual confirmation
                     //sh 'terraform destroy -auto-approve'
-            }
-        }
+           // }
+      //  }
     }
 }
