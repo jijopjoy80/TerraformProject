@@ -18,8 +18,8 @@ pipeline {
         
         stage('Wait') {
             steps {
-                // Wait for some time (180 seconds)
-                sh 'sleep 180'
+                //Wait for some time (120 seconds)
+                sh 'sleep 120'
             }
         }
         
@@ -42,11 +42,11 @@ pipeline {
             }
         }
         
-        //stage('Terraform Destroy') {
-           // steps {
+        stage('Terraform Destroy') {
+            steps {
                 // Destroy the infrastructure resources provisioned by Terraform without manual confirmation
-                    //sh 'terraform destroy -auto-approve'
-           // }
-      //  }
+                    sh 'terraform destroy -auto-approve'
+            }
+        }
     }
 }
